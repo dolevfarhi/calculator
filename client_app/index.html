@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>get data page</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link rel="stylesheet" href="includes/style.css">
+</head>
+<body>
+<form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Num1</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="num1">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Num2</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="num2">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Num3</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="num3">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Invoice Action</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>multiplication</option>
+      <option>average</option>
+      <option>sum</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2">choose action</label>
+    <select multiple class="form-control" id="exampleFormControlSelect2">
+      <option>"POST"</option>
+      <option>"GET"</option>
+    </select>
+  </div>
+   <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script type="text/javascript">
+    var num1 = $('#num1');
+    var num2 = $('#num2');
+    var num3 = $('#num3');
+
+    $.post('calculator1.php',)
+</script>
+<section class="result">Result: </section>
+<script>
+(function () {
+ // POST:
+$.post("http://localhost/dev_11/exercises/calculator/service_calculator/calculator.php",
+{func:"sum",num1:10,num2:15,num3:20},
+function( data ) {
+
+ $(".result").append(data.retVal);
+ console.log( "Return data: " + data.retVal);
+});
+})();
+
+(function () {
+ // GET//
+$.get("http://localhost/dev_11/exercises/calculator/service_calculator/calculator.php?func=mult&num1=10&num2=5&num3=2&num4=1",
+function( data ) {
+
+ $(".result").append(data.retVal);
+ console.log( "Return data: " + data.retVal);
+});
+})();
+
+(function () {
+ // PUT or DELETE etc:
+ var dataObj = {'func':'sum','num1':1,'num2':2,'num3':0};
+ $.ajax({
+    url:'http://localhost/dev_11/exercises/calculator/ws_php_rest/mvc_calculator',
+    data:dataObj,
+    type:'PUT'
+    success:function( data ) {
+        $(".result").append(data.retVal);
+        console.log( "Return data: " + data.retVal);
+});
+
+</script>
+
+</body>
+</html>
